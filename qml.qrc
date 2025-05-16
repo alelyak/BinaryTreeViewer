@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>TreeVisualizer.qml</file>
+        <file>TreeNode.qml</file>
+    </qresource>
+</RCC>

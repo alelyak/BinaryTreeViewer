@@ -1,12 +1,5 @@
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-CONFIG += c++11
-
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+QT += qml quick quickcontrols2
+CONFIG += c++17
 
 SOURCES += \
     main.cpp \
@@ -15,7 +8,15 @@ SOURCES += \
 HEADERS += \
     TreeModel.h
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+RESOURCES += \
+    qml.qrc \
+    qml.qrc
+
+# Для QML модулей
+QML_IMPORT_PATH =
+
+# Указываем, что нужно обрабатывать QML файлы
+OTHER_FILES += \
+    main.qml \
+    TreeVisualizer.qml \
+    TreeNode.qml
