@@ -68,3 +68,37 @@ bool TreeModel::loadFromFile(const QString &filePath)
     qDebug() << "Successfully loaded JSON file:" << cleanPath;
     return true;
 }
+
+bool TreeModel::validateTree(const QJsonObject &node) const
+{
+    if (!node.contains("value")) return false;
+
+    if (node.contains("left")) {
+        if (!node["left"].isObject() && !node["left"].isNull())
+            return false;
+        if (node["left"].isObject() && !validateTree(node["left"].toObject()))
+            return false;
+    }
+
+    if (node.contains("right")) {
+        if (!node["right"].isObject() && !node["right"].isNull())
+            return false;
+        if (node["right"].isObject() && !validateTree(node["right"].toObject()))
+            return false;
+    }
+
+    return true;
+}
+
+int TreeModel::calculateTreeSize(const QJsonObject &node) const
+{
+    if (node.isEmpty()) return 0;
+
+    int size = 1; // current node
+    if (node.contains("left") && node["left"].isObject())
+        size += calculateTreeSize(node["left"].toObject());
+    if (node.contains("right") && node["right"].isObject())
+        size += calculateTreeSize(node["right"].toObject());
+
+    return size;
+}

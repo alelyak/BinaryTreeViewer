@@ -18,6 +18,8 @@ public:
     QJsonObject treeData() const;
 
     Q_INVOKABLE bool loadFromFile(const QString &filePath);
+    bool validateTree(const QJsonObject &node) const;
+    int calculateTreeSize(const QJsonObject &node) const;
 
 signals:
     void treeDataChanged();
