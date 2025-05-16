@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+    QCoreApplication::setOrganizationName("YourCompany");
+    QCoreApplication::setOrganizationDomain("yourdomain.com");
+    QCoreApplication::setApplicationName("BinaryTreeViewer");
 
     // Регистрируем наш TreeModel как QML тип
     qmlRegisterType<TreeModel>("TreeModel", 1, 0, "TreeModel");
