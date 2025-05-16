@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>TreeVisualizer.qml</file>
         <file>TreeNode.qml</file>
+        <file>TreeLine.qml</file>
     </qresource>
 </RCC>
